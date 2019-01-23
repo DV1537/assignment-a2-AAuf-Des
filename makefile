@@ -1,2 +1,2 @@
-TestRule: main.cpp
-	g++ main.cpp declarations.h definitions.cpp -o program.exe
+TestRule: ./crc/main.cpp
+	g++ ./crc/main.cpp ./crc/definitions.cpp ./include/declarations.h ./include/shape.h -o ./bin/program.exe
