@@ -21,9 +21,11 @@ bool checkForUneven(string file);
 
 void setCoords(coordinate * coordinateArray, string file);
 
-string getType(string file, int mountOfVertices);
+string getType(coordinate * coordinateArray, int mountOfVertices);
 
-int getAmountOfVertices(string file);
+int getAmountOfCoordinates(string file);
+
+int getBadVertices(coordinate * coordinateArray, string file);
 
 
 

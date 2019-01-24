@@ -140,6 +140,23 @@ bool checkForUneven(string file){
 
 //-------------------------------------------------------------------------------------------//
 
+int getAmountOfCoordinates(string file){
+	ifstream myFile;
+	double num;
+	int count;
+
+	myFile.open(file);
+
+	while(myFile >> num){
+		count++;
+	}
+	int amountOfVertices = count / 2;
+
+	myFile.close();
+
+	return amountOfVertices;
+}
+
 void setCoords(coordinate * coordinateArray, string file){
 	ifstream myFile;
 	myFile.open(file);
@@ -163,19 +180,19 @@ void setCoords(coordinate * coordinateArray, string file){
 }
 
 
-string getType(string file, int amountOfVertices){
+string getType(coordinate * coordinateArray, int amountOfCoordinates){
 	string type;
-	
-	if (amountOfVertices == 1){
+
+	if (amountOfCoordinates == 1){
 		type = "point";
 	}
-	else if (amountOfVertices == 2){
+	else if (amountOfCoordinates == 2){
 		type = "line";
 	}
-	else if (amountOfVertices == 3){
+	else if (amountOfCoordinates == 3){
 		type = "triangle";
 	}
-	else if(amountOfVertices >= 4){
+	else if(amountOfCoordinates >= 4){
 		type = "polygon";
 	}
 	else{
@@ -184,20 +201,6 @@ string getType(string file, int amountOfVertices){
 	return type;
 }
 
-int getAmountOfVertices(string file){
-	ifstream myFile;
-	double num;
-	int count;
-
-	myFile.open(file);
-
-	while(myFile >> num){
-		count++;
-	}
-	int amountOfVertices = count / 2;
-
-	myFile.close();
-
-	return amountOfVertices;
+int getBadVertices(coordinate * coordinateArray, string file){
+	return 1;
 }
-

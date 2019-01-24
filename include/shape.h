@@ -17,6 +17,7 @@ class shape{
 
     protected:
     coordinate * coords;
+    coordinate centerCoord;
     string type;
 }; 
 

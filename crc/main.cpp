@@ -2,9 +2,9 @@
 #include <fstream>
 #include <string>
 #include "../include/declarations.h"
-//#include "../include/shape.h"
+#include "../include/shape.h"
 #include "../include/coordinates.h"
-//#include "../include/point.h"
+#include "../include/point.h"
 using namespace std;
 
 int main(int argc, const char * argv[])
@@ -25,27 +25,28 @@ int main(int argc, const char * argv[])
         exit(EXIT_FAILURE);
     }
 
-    int amountOfVertices = getAmountOfVertices(argv[1]);
+    int amountOfCoordinates = getAmountOfCoordinates(argv[1]);
 
-    coordinate * coordArray = new coordinate[amountOfVertices];
+    coordinate * coordArray = new coordinate[amountOfCoordinates];
 
     setCoords(coordArray, argv[1]);
 
-    coordArray[0].show();       //del
-    coordArray[1].show();       //del
-
-
-
-    string type = getType(argv[1], amountOfVertices);
+    string type = getType(coordArray, amountOfCoordinates);
 
     cout << "shape type = " << type << endl;           //del
 
     
 
     
-    if (amountOfVertices == 1){
-        //point point(amountOfVertices);
+    if (type == "point"){
+        point point(amountOfCoordinates, coordArray);
+
+        point.position();
+
     }
+
+
+    
 
 
 
