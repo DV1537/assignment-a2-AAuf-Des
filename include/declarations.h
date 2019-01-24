@@ -1,6 +1,7 @@
 #ifndef DECLARATIONS_H
 #define DECLARATIONS_H
 #include <string>
+#include "coordinates.h"
 using namespace std;
 
 //      valid file check
@@ -18,9 +19,15 @@ bool checkForMultipleLines(string file);
 bool checkForUneven(string file);
 //-----------------------------------
 
-string getType(string file);
+void setCoords(coordinate * coordinateArray, string file);
+
+string getType(string file, int mountOfVertices);
 
 int getAmountOfVertices(string file);
+
+
+
+
 
 
 

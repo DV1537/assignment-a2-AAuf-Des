@@ -16,7 +16,8 @@ class shape{
 
 
     protected:
-    
+    coordinate * coords;
+    string type;
 }; 
 
 

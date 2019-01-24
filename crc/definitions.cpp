@@ -26,7 +26,6 @@ bool checkIfValid(string file){
 	}
 
     return isValid;
-
 }
 
 //checks so that the file (argv[1]) actually exist.
@@ -139,11 +138,34 @@ bool checkForUneven(string file){
 	return isValid;
 }
 
+//-------------------------------------------------------------------------------------------//
 
-string getType(string file){
+void setCoords(coordinate * coordinateArray, string file){
+	ifstream myFile;
+	myFile.open(file);
+
+	double num;
+	int count = 0;
+	int coordinateIndex = 0;
+
+	while (myFile >> num){
+		if (count % 2 == 0){
+			coordinateArray[coordinateIndex].x = num;
+		}
+		else if (count % 2 != 0){
+			coordinateArray[coordinateIndex].y = num;
+			coordinateIndex++;
+		}
+		count++;
+	}
+
+	myFile.close();
+}
+
+
+string getType(string file, int amountOfVertices){
 	string type;
-	int amountOfVertices = getAmountOfVertices(file);
-
+	
 	if (amountOfVertices == 1){
 		type = "point";
 	}
@@ -170,11 +192,8 @@ int getAmountOfVertices(string file){
 	myFile.open(file);
 
 	while(myFile >> num){
-		cout << num << endl;
 		count++;
 	}
-
-	cout << "amount of vertices: " << count/2 << endl; 		//del
 	int amountOfVertices = count / 2;
 
 	myFile.close();
