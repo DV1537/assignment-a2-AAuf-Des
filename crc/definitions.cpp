@@ -201,6 +201,7 @@ string getType(coordinate * coordinateArray, int amountOfCoordinates){
 	return type;
 }
 
+//return amount of actuall vertexes the shape got, eg if two points are on the same line without changeing k value.
 int getBadVertices(coordinate * coordinateArray, string file){
 	return 1;
 }

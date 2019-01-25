@@ -1,8 +1,8 @@
 #include "./shape.h"
 
-class point: public shape{
+class line: public shape{
     public:
-    point(int amountOfVertices, coordinate * coordinateArray);
+    line(int amountOfVertices, coordinate * coordinateArray);
 
     string getType();
     double area();
@@ -12,46 +12,49 @@ class point: public shape{
     int distance();
 };
 
-//gör om till statisk vanlig varriabel, alltid 1.
-point::point(int amountOfVertices, coordinate * coordinateArray){
+line::line(int amountOfVertices, coordinate * coordinateArray){
     coords = new coordinate[amountOfVertices];
 
     for(int i = 0; i < amountOfVertices; i++){
         coords[i].x = coordinateArray[i].x;
         coords[i].y = coordinateArray[i].y;
     }
+
     cout << "constructor show: " << endl;
     for(int i = 0; i < amountOfVertices; i++){
         cout << "(" << coords[i].x << ", " << coords[i].y << ")" << endl;
     }
 
-    centerCoord = coords[0];
+    centerCoord.x = (coords[0].x + coords[1].x) / 2;
+    centerCoord.y = (coords[0].y + coords[1].y) / 2;
+    cout << "constructor centercoord.show(): " << endl;
+    centerCoord.show();    
 }
 
-string point::getType(){
-    type = "point";
+
+string line::getType(){
+    type = "line";
     return type;
 }
 
-double point::area(){
+double line::area(){
     return -1;
 }
 
-double point::circumreference(){
+double line::circumreference(){
     return 0;
 }
 
-coordinate point::position(){
+coordinate line::position(){
     return centerCoord;
 }
 
-bool point::isConvex(){
+bool line::isConvex(){
     return false;
 }
 
-int point::distance(){
+int line::distance(){
     return 1;
 
     // not done
 }
-

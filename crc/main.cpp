@@ -5,6 +5,8 @@
 #include "../include/shape.h"
 #include "../include/coordinates.h"
 #include "../include/point.h"
+#include "../include/line.h"
+#include "../include/triangle.h"
 using namespace std;
 
 int main(int argc, const char * argv[])
@@ -39,11 +41,17 @@ int main(int argc, const char * argv[])
 
     
     if (type == "point"){
-        point point(amountOfCoordinates, coordArray);
-
-        point.position();
-
+        point fig(amountOfCoordinates, coordArray);
     }
+    else if (type == "line"){
+        line fig(amountOfCoordinates, coordArray);
+    }
+    else if (type == "triangle"){
+        line fig(amountOfCoordinates, coordArray);
+    }
+
+
+
 
 
     
