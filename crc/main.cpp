@@ -54,16 +54,18 @@ int main(int argc, const char * argv[])
 
         cout << "area: " << fig.area() << endl;
     }
+    else if (type == "polygon"){
+        polygon fig(amountOfCoordinates, coordArray);
 
+        cout << "circumfrence: " << fig.circumreference() << endl;
 
+        cout << "area: " << fig.area() << endl;
+    }
 
+    else{
+        cout << "error: type: main.cpp.67 " << endl;
+    }
 
-
-    
-
-
-
-    
 
     //4 use cases 
 
