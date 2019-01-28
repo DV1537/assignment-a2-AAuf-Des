@@ -7,6 +7,7 @@
 #include "../include/point.h"
 #include "../include/line.h"
 #include "../include/triangle.h"
+#include "../include/polygon.h"
 using namespace std;
 
 int main(int argc, const char * argv[])
@@ -47,7 +48,11 @@ int main(int argc, const char * argv[])
         line fig(amountOfCoordinates, coordArray);
     }
     else if (type == "triangle"){
-        line fig(amountOfCoordinates, coordArray);
+        triangle fig(amountOfCoordinates, coordArray);
+
+        cout << "circumfrence: " << fig.circumreference() << endl;
+
+        cout << "area: " << fig.area() << endl;
     }
 
 
