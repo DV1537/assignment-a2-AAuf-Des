@@ -10,7 +10,12 @@ class point: public shape{
     coordinate position();
     bool isConvex();
     int distance();
+    ~point();
 };
+
+point::~point(){
+    delete[] coords;
+}
 
 point::point(int amountOfVertices, coordinate * coordinateArray){
     coords = new coordinate[amountOfVertices];
@@ -34,9 +39,6 @@ point::point(int amountOfVertices, coordinate * coordinateArray){
     centerCoord.x /= amountOfVertices;
 
     centerCoord.y /= amountOfVertices;
-
-    cout << "center coord: ";
-    centerCoord.show();
 }
 
 string point::getType(){

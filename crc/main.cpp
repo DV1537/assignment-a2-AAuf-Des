@@ -67,6 +67,10 @@ int main(int argc, const char * argv[])
         cout << "error: \"type\" @ main.cpp.r67 " << endl;
     }
 
+
+    delete[] coordArray;
+
+
     
 
     return 0;

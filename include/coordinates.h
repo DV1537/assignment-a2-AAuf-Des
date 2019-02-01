@@ -17,13 +17,6 @@ struct coordinate{
     void show(){
         cout << "(" << x << ", " << y << ")" << endl;
     }
-
-    double distance(coordinate d) {
-        float dx = d.getX() - x;
-        float dy = d.getY() - y;
-        float distance = std::hypot(dx, dy);
-        return distance;
-    }
 };
 
 

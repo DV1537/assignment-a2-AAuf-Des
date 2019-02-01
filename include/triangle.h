@@ -10,7 +10,13 @@ class triangle: public shape{
     coordinate position();
     bool isConvex();
     int distance();
+    ~triangle();
 };
+
+triangle::~triangle(){
+    delete[] coords;
+    delete[] sides;
+}
 
 triangle::triangle(int amountOfVertices, coordinate * coordinateArray){
     coords = new coordinate[amountOfVertices];
@@ -30,9 +36,6 @@ triangle::triangle(int amountOfVertices, coordinate * coordinateArray){
     centerCoord.x /= amountOfVertices;
 
     centerCoord.y /= amountOfVertices;
-
-    cout << "center coord: ";
-    centerCoord.show();
 
 }
 

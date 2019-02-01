@@ -10,6 +10,7 @@ class line: public shape{
     coordinate position();
     bool isConvex();
     int distance();
+    ~line();
 };
 
 line::line(int amountOfVertices, coordinate * coordinateArray){
@@ -33,9 +34,10 @@ line::line(int amountOfVertices, coordinate * coordinateArray){
     centerCoord.x /= amountOfVertices;
 
     centerCoord.y /= amountOfVertices;
+}
 
-    cout << "center coord: ";
-    centerCoord.show();
+line::~line(){
+    delete [] coords;
 }
 
 

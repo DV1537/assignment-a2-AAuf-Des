@@ -10,6 +10,7 @@ class polygon: public shape{
     coordinate position();
     bool isConvex();
     int distance();
+    ~polygon();
 };
 
 polygon::polygon(int amountOfVertices, coordinate * coordinateArray){
@@ -32,11 +33,14 @@ polygon::polygon(int amountOfVertices, coordinate * coordinateArray){
 
     centerCoord.y /= amountOfVertices;
 
-    centerCoord.show();
-
-    system("pause");
 }
 
+
+polygon::~polygon(){
+    delete [] coords;
+    delete [] sides;
+    
+}
 
 string polygon::getType(){
     type = "polygon";
@@ -113,9 +117,8 @@ bool polygon::isConvex(){
             negative = true;
         }
     }
-    
-    delete[] coordinateDirection;
-    coordinateDirection = nullptr;
+
+    delete [] coordinateDirection;
 
     if (positive && negative){
         return false;

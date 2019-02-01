@@ -206,9 +206,6 @@ string getType(coordinate * coordinateArray, int amountOfVertices){
 		}
 	}
 
- 
-	system("pause");
-	
 	if (newAmountOfVertices == 1){
 		type = "point";
 	}
@@ -225,6 +222,11 @@ string getType(coordinate * coordinateArray, int amountOfVertices){
 	else{
 		cout << "error: \"getType()\" @ definitions.cpp.r199 " << endl;
 	}
+
+
+	delete[] deltaX;
+	delete[] deltaY;
+	delete[] kVal;
 
 	return type;
 }
