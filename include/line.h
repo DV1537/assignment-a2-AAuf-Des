@@ -20,15 +20,22 @@ line::line(int amountOfVertices, coordinate * coordinateArray){
         coords[i].y = coordinateArray[i].y;
     }
 
-    cout << "constructor show: " << endl;
     for(int i = 0; i < amountOfVertices; i++){
-        cout << "(" << coords[i].x << ", " << coords[i].y << ")" << endl;
+        coords[i].x = coordinateArray[i].x;
+        coords[i].y = coordinateArray[i].y;
     }
 
-    centerCoord.x = (coords[0].x + coords[1].x) / 2;
-    centerCoord.y = (coords[0].y + coords[1].y) / 2;
-    cout << "constructor centercoord.show(): " << endl;
-    centerCoord.show();    
+    for(int i = 0; i < amountOfVertices; i++){
+            centerCoord.x += coords[i].x;
+            centerCoord.y += coords[i].y;
+    }
+
+    centerCoord.x /= amountOfVertices;
+
+    centerCoord.y /= amountOfVertices;
+
+    cout << "center coord: ";
+    centerCoord.show();
 }
 
 

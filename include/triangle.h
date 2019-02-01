@@ -22,8 +22,17 @@ triangle::triangle(int amountOfVertices, coordinate * coordinateArray){
         coords[i].y = coordinateArray[i].y;
     }
 
-    centerCoord.x = (coords[0].x + coords[1].x + coords[2].x) / 3;
-    centerCoord.y = (coords[0].y + coords[1].y + coords[2].y) / 3;
+    for(int i = 0; i < amountOfVertices; i++){
+            centerCoord.x += coords[i].x;
+            centerCoord.y += coords[i].y;
+    }
+
+    centerCoord.x /= amountOfVertices;
+
+    centerCoord.y /= amountOfVertices;
+
+    cout << "center coord: ";
+    centerCoord.show();
 
 }
 

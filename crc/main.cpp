@@ -14,6 +14,7 @@ int main(int argc, const char * argv[])
 {
     if (argc != 2){
         cout << "you need one input file" << endl;
+        exit(EXIT_FAILURE);
     }
 
     string str;
@@ -28,46 +29,41 @@ int main(int argc, const char * argv[])
         exit(EXIT_FAILURE);
     }
 
-    int amountOfCoordinates = getAmountOfCoordinates(argv[1]);
+    int amountOfVertices = getAmountOfCoordinates(argv[1]);
 
-    coordinate * coordArray = new coordinate[amountOfCoordinates];
+    coordinate * coordArray = new coordinate[amountOfVertices];
 
     setCoords(coordArray, argv[1]);
 
-    string type = getType(coordArray, amountOfCoordinates);
+    if (checkForDuplicates(coordArray, amountOfVertices) == true){
+        cout << "error: duplicate coordinates. " << endl;
+        exit(EXIT_FAILURE);
+    }
 
-    cout << "shape type = " << type << endl;           //del
-
-    
+    string type = getType(coordArray, amountOfVertices);
 
     
     if (type == "point"){
-        point fig(amountOfCoordinates, coordArray);
+        point fig(amountOfVertices, coordArray);
+        cout << "figure type: " << fig.getType() << endl;
     }
     else if (type == "line"){
-        line fig(amountOfCoordinates, coordArray);
+        line fig(amountOfVertices, coordArray);
+        cout << "figure type: " << fig.getType() << endl;
     }
     else if (type == "triangle"){
-        triangle fig(amountOfCoordinates, coordArray);
-
-        cout << "circumfrence: " << fig.circumreference() << endl;
-
-        cout << "area: " << fig.area() << endl;
+        triangle fig(amountOfVertices, coordArray);
+        cout << "figure type: " << fig.getType() << endl;
     }
     else if (type == "polygon"){
-        polygon fig(amountOfCoordinates, coordArray);
-
-        cout << "circumfrence: " << fig.circumreference() << endl;
-
-        cout << "area: " << fig.area() << endl;
+        polygon fig(amountOfVertices, coordArray);
+        cout << "figure type: " << fig.getType() << endl;
     }
-
     else{
-        cout << "error: type: main.cpp.67 " << endl;
+        cout << "error: \"type\" @ main.cpp.r67 " << endl;
     }
 
-
-    //4 use cases 
+    
 
     return 0;
 }

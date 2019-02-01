@@ -150,20 +150,23 @@ int getAmountOfCoordinates(string file){
 	while(myFile >> num){
 		count++;
 	}
-	int amountOfVertices = count / 2;
+	int amountOfCoordinates = count / 2;
 
 	myFile.close();
 
-	return amountOfVertices;
+	return amountOfCoordinates;
 }
 
 void setCoords(coordinate * coordinateArray, string file){
 	ifstream myFile;
 	myFile.open(file);
 
+	int amountOfCoordinates = getAmountOfCoordinates(file) ;
+
 	double num;
 	int count = 0;
 	int coordinateIndex = 0;
+
 
 	while (myFile >> num){
 		if (count % 2 == 0){
@@ -175,33 +178,44 @@ void setCoords(coordinate * coordinateArray, string file){
 		}
 		count++;
 	}
-
 	myFile.close();
+
 }
 
 
-string getType(coordinate * coordinateArray, int amountOfCoordinates){
+string getType(coordinate * coordinateArray, int amountOfVertices){
 	string type;
-
-	if (amountOfCoordinates == 1){
+	
+	if (amountOfVertices == 1){
 		type = "point";
 	}
-	else if (amountOfCoordinates == 2){
+	else if (amountOfVertices == 2){
 		type = "line";
 	}
-	else if (amountOfCoordinates == 3){
+	else if (amountOfVertices == 3){
 		type = "triangle";
 	}
-	else if(amountOfCoordinates >= 4){
+	else if(amountOfVertices >= 4){
 		type = "polygon";
 	}
+
 	else{
-		cout << "error(gettype)" << endl;
+		cout << "error: \"getType()\" @ definitions.cpp.r199 " << endl;
 	}
+
 	return type;
 }
 
-//return amount of actuall vertexes the shape got, eg if two points are on the same line without changeing k value.
-int getBadVertices(coordinate * coordinateArray, string file){
-	return 1;
+bool checkForDuplicates(coordinate * coordinateArray, int amountOfVertices){
+	bool haveDuplicate = false;
+
+	for(int i = 0; i < amountOfVertices && haveDuplicate == false; i++) {
+        for(int j = i + 1; j < amountOfVertices; j++) {
+            if(coordinateArray[i].x == coordinateArray[j].x && coordinateArray[i].y == coordinateArray[j].y) {
+				haveDuplicate = true;
+            }
+        }
+    }
+
+	return haveDuplicate;
 }

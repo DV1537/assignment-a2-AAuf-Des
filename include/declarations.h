@@ -25,8 +25,7 @@ string getType(coordinate * coordinateArray, int mountOfVertices);
 
 int getAmountOfCoordinates(string file);
 
-int getBadVertices(coordinate * coordinateArray, string file);
-
+bool checkForDuplicates(coordinate * coordinateArray, int amountOfVertices);
 
 
 
