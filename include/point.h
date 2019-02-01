@@ -61,8 +61,6 @@ bool point::isConvex(){
 }
 
 int point::distance(){
-    return 1;
-
-    // not done
+    return 0;
 }
 

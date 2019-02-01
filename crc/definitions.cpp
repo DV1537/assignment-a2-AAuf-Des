@@ -187,41 +187,38 @@ string getType(coordinate * coordinateArray, int amountOfVertices){
 	string type;
 	double* deltaY = new double[amountOfVertices];
 	double* deltaX = new double[amountOfVertices];
-	double* kVal = new double[amountOfVertices];
+	double* kVal = new double[amountOfVertices - 1];
+	int newAmountOfVertices = amountOfVertices;
 
-	int amountOfCoordsOnLine = 0;
 	
-	for (int i = 0; i < (amountOfVertices - 1); i++)
+	for (int i = 0; i < amountOfVertices - 1; i++)
 	{
 		deltaY[i] = coordinateArray[i + 1].y - coordinateArray[i].y;
 		deltaX[i] = coordinateArray[i + 1].x - coordinateArray[i].x;
 		kVal[i] = (deltaY[i] / deltaX[i]);
 	}
 
-	for (int i = 0; i < (amountOfVertices - 1); i++){
-		cout << "kVal: " << kVal[i] << "   kvall [i+1] " << kVal[i+1] << endl;
-		if (kVal[i] == kVal[i+1])
+	for (int i = 0; i < amountOfVertices - 1; i++){
+
+		if (kVal[i] == kVal[i-1])
 		{
-			
-			amountOfCoordsOnLine++;
+			newAmountOfVertices--;
 		}
 	}
 
-	amountOfVertices = amountOfVertices - amountOfCoordsOnLine;
-
-	cout << "amount of coords with same kVal: " << amountOfCoordsOnLine << endl;
+ 
 	system("pause");
 	
-	if (amountOfVertices == 1){
+	if (newAmountOfVertices == 1){
 		type = "point";
 	}
-	else if (amountOfVertices == 2){
+	else if (newAmountOfVertices == 2){
 		type = "line";
 	}
-	else if (amountOfVertices == 3){
+	else if (newAmountOfVertices == 3){
 		type = "triangle";
 	}
-	else if(amountOfVertices >= 4){
+	else if(newAmountOfVertices >= 4){
 		type = "polygon";
 	}
 

@@ -57,8 +57,6 @@ double polygon::area(){
 
     area = abs(total/2);
 
-    cout << "area: " << area << endl;
-
     return area;
 }
 
@@ -88,7 +86,43 @@ coordinate polygon::position(){
 }
 
 bool polygon::isConvex(){
-    return false;
+    int s = coordSize - 2;
+    double *coordinateDirection = new double[s];
+    double dot[4] = {0};
+
+    for (int l = 0; l < s; l++)
+    {
+        dot[0] = coords[l+1].x - coords[l].x;
+        dot[1] = coords[l+1].y - coords[l].y;
+        
+        dot[2] = coords[l+2].x - coords[l+1].x;
+        dot[3] = coords[l+2].y - coords[l+1].y;
+        
+        coordinateDirection[l] = dot[0] * dot[3] - dot[1] * dot[2];
+    }
+
+    bool positive = false;
+    bool negative = false;
+
+    for (int l = 0; l < s; l++)
+    {
+        if (coordinateDirection[l] > 0){
+            positive = true;
+        }
+        else{
+            negative = true;
+        }
+    }
+    
+    delete[] coordinateDirection;
+    coordinateDirection = nullptr;
+
+    if (positive && negative){
+        return false;
+    }
+    else{
+        return true;
+    }
 }
 
 int polygon::distance(){

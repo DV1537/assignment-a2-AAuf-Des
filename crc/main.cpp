@@ -46,18 +46,22 @@ int main(int argc, const char * argv[])
     if (type == "point"){
         point fig(amountOfVertices, coordArray);
         cout << "figure type: " << fig.getType() << endl;
+        cout << "area: " << fig.area() << endl;
     }
     else if (type == "line"){
         line fig(amountOfVertices, coordArray);
         cout << "figure type: " << fig.getType() << endl;
+        cout << "area: " << fig.area() << endl;
     }
     else if (type == "triangle"){
         triangle fig(amountOfVertices, coordArray);
         cout << "figure type: " << fig.getType() << endl;
+        cout << "area: " << fig.area() << endl;
     }
     else if (type == "polygon"){
         polygon fig(amountOfVertices, coordArray);
         cout << "figure type: " << fig.getType() << endl;
+        cout << "area: " << fig.area() << endl;
     }
     else{
         cout << "error: \"type\" @ main.cpp.r67 " << endl;

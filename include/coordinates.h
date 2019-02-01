@@ -10,8 +10,19 @@ struct coordinate{
     double y;
     double kVal;
 
+
+    double getX(){return x;}
+    double getY(){return y;}
+
     void show(){
         cout << "(" << x << ", " << y << ")" << endl;
+    }
+
+    double distance(coordinate d) {
+        float dx = d.getX() - x;
+        float dy = d.getY() - y;
+        float distance = std::hypot(dx, dy);
+        return distance;
     }
 };
 

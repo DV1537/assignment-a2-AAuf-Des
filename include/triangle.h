@@ -42,9 +42,17 @@ string triangle::getType(){
 }
 
 double triangle::area(){
+    double total = 0;
     double area = 0;
 
-    area = abs((coords[0].x *(coords[1].y - coords[2].y) + coords[1].x *(coords[2].y - coords[0].y) + coords[2].x *(coords[0].y - coords[1].y))/2 );
+    int j = coordSize - 1;
+
+    for(int i = 0; i < coordSize; i++){
+        total += (coords[j].x + coords[i].x ) * (coords[j].y - coords[i].y);
+        j = i;
+    }
+
+    area = abs(total/2);
 
     return area;
 }
