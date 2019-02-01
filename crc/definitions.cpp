@@ -185,6 +185,32 @@ void setCoords(coordinate * coordinateArray, string file){
 
 string getType(coordinate * coordinateArray, int amountOfVertices){
 	string type;
+	double* deltaY = new double[amountOfVertices];
+	double* deltaX = new double[amountOfVertices];
+	double* kVal = new double[amountOfVertices];
+
+	int amountOfCoordsOnLine = 0;
+	
+	for (int i = 0; i < (amountOfVertices - 1); i++)
+	{
+		deltaY[i] = coordinateArray[i + 1].y - coordinateArray[i].y;
+		deltaX[i] = coordinateArray[i + 1].x - coordinateArray[i].x;
+		kVal[i] = (deltaY[i] / deltaX[i]);
+	}
+
+	for (int i = 0; i < (amountOfVertices - 1); i++){
+		cout << "kVal: " << kVal[i] << "   kvall [i+1] " << kVal[i+1] << endl;
+		if (kVal[i] == kVal[i+1])
+		{
+			
+			amountOfCoordsOnLine++;
+		}
+	}
+
+	amountOfVertices = amountOfVertices - amountOfCoordsOnLine;
+
+	cout << "amount of coords with same kVal: " << amountOfCoordsOnLine << endl;
+	system("pause");
 	
 	if (amountOfVertices == 1){
 		type = "point";
